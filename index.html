@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <title>Tovin Tom | Portfolio</title>
+
+  <meta name="description"
+        content="Portfolio of Tovin Tom - Flask Developer and Full Stack Beginner">
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <style>
+
+    html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: linear-gradient(135deg, #111827, #1f2937);
+  color: white;
+  font-family: 'Segoe UI', sans-serif;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* GLOW BACKGROUND */
+
+.glow {
+  position: fixed;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(
+    circle,
+    rgba(96,165,250,0.18),
+    transparent 60%
+  );
+  top: 10%;
+  left: -120px;
+  filter: blur(90px);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* NAVBAR */
+
+.navbar {
+  background: rgba(17, 24, 39, 0.85);
+  backdrop-filter: blur(10px);
+  padding: 15px 0;
+}
+
+.navbar-brand {
+  font-size: 1.7rem;
+  font-weight: bold;
+  color: #60a5fa !important;
+}
+
+.nav-link {
+  color: white !important;
+  margin-left: 15px;
+  transition: 0.3s;
+}
+
+.nav-link:hover {
+  color: #60a5fa !important;
+}
+
+/* HERO */
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 100px 20px;
+}
+
+.profile-img {
+  width: 190px;
+  height: 190px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid #60a5fa;
+  box-shadow: 0 0 35px rgba(96,165,250,0.5);
+  margin-bottom: 30px;
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+
+}
+
+.hero h1 {
+  font-size: 4rem;
+  font-weight: 800;
+  letter-spacing: -2px;
+  margin-bottom: 15px;
+}
+
+.hero-subtitle {
+  font-size: 1.3rem;
+  color: #93c5fd;
+  margin-bottom: 25px;
+}
+
+.hero-desc {
+  max-width: 760px;
+  margin: auto;
+  color: #cbd5e1;
+  line-height: 1.9;
+  font-size: 1.08rem;
+}
+
+/* SOCIAL */
+
+.social-icons {
+  margin-top: 35px;
+}
+
+.social-icons a {
+  color: white;
+  font-size: 1.8rem;
+  margin: 0 14px;
+  transition: 0.3s;
+  display: inline-block;
+}
+
+.social-icons a:hover {
+  color: #60a5fa;
+  transform: translateY(-5px) scale(1.15);
+}
+
+/* SECTIONS */
+
+section {
+  padding: 100px 0;
+  position: relative;
+  z-index: 2;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.7rem;
+  margin-bottom: 60px;
+  color: #60a5fa;
+  font-weight: 700;
+}
+
+/* SKILLS */
+
+.skills-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 18px;
+}
+
+.skill-badge {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 12px 22px;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  color: white;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.skill-badge:hover {
+  background: #60a5fa;
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(96,165,250,0.25);
+}
+
+/* PROJECT CARD */
+
+.project-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 24px;
+  padding: 40px;
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+  transform-style: preserve-3d;
+  will-change: transform;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.project-card:hover {
+  border-color: rgba(96,165,250,0.4);
+  box-shadow: 0 15px 45px rgba(0,0,0,0.4);
+}
+
+.project-card h4 {
+  color: #60a5fa;
+  margin-bottom: 20px;
+  font-weight: bold;
+  font-size: 1.6rem;
+}
+
+.project-card p {
+  color: #d1d5db;
+  line-height: 1.8;
+}
+
+.project-card ul {
+  padding-left: 20px;
+  margin-top: 20px;
+}
+
+.project-card li {
+  margin-bottom: 10px;
+  color: #d1d5db;
+}
+
+/* TECH STACK */
+
+.tech-stack span {
+  background: #111827;
+  border: 1px solid #374151;
+  padding: 8px 14px;
+  border-radius: 20px;
+  margin-right: 10px;
+  display: inline-block;
+  margin-top: 12px;
+}
+
+/* BUTTON */
+
+.project-links a {
+  text-decoration: none;
+  color: white;
+  background: linear-gradient(
+    135deg,
+    #2563eb,
+    #3b82f6
+  );
+  padding: 13px 24px;
+  border-radius: 12px;
+  display: inline-block;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.project-links a:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(59,130,246,0.3);
+}
+
+/* FOOTER */
+
+footer {
+  background: #111827;
+  text-align: center;
+  padding: 25px;
+  margin-top: 60px;
+  color: #9ca3af;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+/* GSAP SAFE FIX */
+
+.reveal-section,
+.reveal-badge,
+.reveal-card,
+.reveal-text {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+
+  .hero h1 {
+    font-size: 2.8rem;
+  }
+
+  .hero-desc {
+    font-size: 1rem;
+  }
+
+  .section-title {
+    font-size: 2.2rem;
+  }
+
+  .project-card {
+    padding: 28px;
+  }
+
+}
+
+  </style>
+
+</head>
+
+<body>
+
+  <!-- GLOW -->
+  <div class="glow"></div>
+
+  <!-- NAVBAR -->
+
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+
+    <div class="container">
+
+      <a class="navbar-brand"
+         href="#">
+        Tovin Tom
+      </a>
+
+      <button class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navMenu">
+
+        <span class="navbar-toggler-icon"></span>
+
+      </button>
+
+      <div class="collapse navbar-collapse"
+           id="navMenu">
+
+        <ul class="navbar-nav ms-auto">
+
+          <li class="nav-item">
+            <a class="nav-link"
+               href="#about">
+              About
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link"
+               href="#skills">
+              Skills
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link"
+               href="#projects">
+              Projects
+            </a>
+          </li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+  </nav>
+
+  <!-- HERO -->
+
+  <section class="hero"
+           id="about">
+
+    <div class="container">
+
+      <img src="static/images/tovin.jpg"
+           alt="Tovin Tom"
+           class="profile-img">
+
+      <h1 class="reveal-text">
+        Tovin Tom
+      </h1>
+
+      <p class="reveal-text hero-subtitle">
+        Python & Flask Developer | Full Stack Web Development Enthusiast
+      </p>
+
+      <p class="reveal-text hero-desc">
+
+        I am a passionate and self-motivated full stack web developer
+        with strong interest in backend development and modern web technologies.
+
+        I have experience building responsive and dynamic web applications
+        using Flask, MySQL, HTML, CSS, Bootstrap and JavaScript.
+
+        My primary project is a complete ecommerce platform featuring
+        authentication systems, admin dashboard, inventory management,
+        product reviews, reporting systems and responsive UI design.
+
+        I enjoy solving real-world problems through coding and continuously
+        improving my knowledge in database management, backend architecture
+        and full stack development.
+
+      </p>
+
+      <!-- SOCIAL -->
+
+      <div class="social-icons">
+
+        <a href="https://www.linkedin.com/in/tovin-tom"
+           target="_blank">
+
+          <i class="bi bi-linkedin"></i>
+
+        </a>
+
+        <a href="https://github.com/tovintom23-max"
+           target="_blank">
+
+          <i class="bi bi-github"></i>
+
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- SKILLS -->
+
+  <section id="skills">
+
+    <div class="container">
+
+      <h2 class="section-title reveal-section">
+        Skills
+      </h2>
+
+      <div class="skills-wrapper">
+
+        <span class="skill-badge reveal-badge">Python</span>
+        <span class="skill-badge reveal-badge">Flask</span>
+        <span class="skill-badge reveal-badge">HTML</span>
+        <span class="skill-badge reveal-badge">CSS</span>
+        <span class="skill-badge reveal-badge">Bootstrap</span>
+        <span class="skill-badge reveal-badge">JavaScript</span>
+        <span class="skill-badge reveal-badge">MySQL</span>
+        <span class="skill-badge reveal-badge">GitHub</span>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- PROJECTS -->
+
+  <section id="projects">
+
+    <div class="container">
+
+      <h2 class="section-title reveal-section">
+        My Project
+      </h2>
+
+      <div class="row justify-content-center">
+
+        <div class="col-lg-8">
+
+          <div class="project-card reveal-card">
+
+            <h4>
+              <i class="bi bi-cart-fill"></i>
+              Flask Ecommerce Website
+            </h4>
+
+            <p>
+
+              Developed a responsive full stack ecommerce web application
+              using Flask, MySQL, Bootstrap and JavaScript with both
+              user and admin functionalities.
+
+            </p>
+
+            <ul>
+
+              <li>User authentication system</li>
+              <li>Admin dashboard</li>
+              <li>Product management</li>
+              <li>Wishlist and cart system</li>
+              <li>Order management</li>
+              <li>Stock tracking</li>
+              <li>PDF & Excel sales reports</li>
+              <li>Product review system</li>
+              <li>Secure login and registration system</li>
+              <li>Responsive mobile-friendly UI</li>
+              <li>Product search and filtering</li>
+              <li>Invoice and report generation</li>
+
+            </ul>
+
+            <div class="tech-stack mt-4">
+
+              <span>Flask</span>
+              <span>Python</span>
+              <span>MySQL</span>
+              <span>Bootstrap</span>
+              <span>JavaScript</span>
+
+            </div>
+
+            <div class="project-links mt-4">
+
+              <a href="https://github.com/tovintom23-max"
+                 target="_blank">
+
+                <i class="bi bi-github"></i>
+                GitHub Repository
+
+              </a>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+    © 2026 Tovin Tom | Portfolio
+  </footer>
+
+  <!-- SCRIPTS -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- GSAP -->
+
+  <script>
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    window.addEventListener("load", () => {
+      ScrollTrigger.refresh();
+    });
+
+    /* PAGE LOAD */
+
+    gsap.from("body", {
+      opacity: 0,
+      duration: 1
+    });
+
+    /* NAVBAR */
+
+    gsap.from(".navbar", {
+      y: -80,
+      opacity: 0,
+      duration: 1,
+      ease: "power4.out"
+    });
+
+    /* HERO TEXT */
+
+    gsap.from(".reveal-text", {
+      y: 40,
+      opacity: 0,
+      duration: 1,
+      stagger: 0.15,
+      ease: "power3.out"
+    });
+
+    /* IMAGE */
+
+    gsap.from(".profile-img", {
+      scale: 0.7,
+      opacity: 0,
+      duration: 1.2,
+      ease: "elastic.out(1, 0.6)"
+    });
+
+    /* SECTION HEADINGS */
+
+    gsap.utils.toArray(".reveal-section").forEach((el) => {
+
+      gsap.from(el, {
+
+        scrollTrigger: {
+          trigger: el,
+          start: "top 90%"
+        },
+
+        opacity: 0,
+        y: 40,
+        duration: 0.8
+
+      });
+
+    });
+
+    /* SKILLS */
+
+    /* SKILLS */
+
+gsap.utils.toArray(".reveal-badge").forEach((badge) => {
+
+  gsap.from(badge, {
+
+    scrollTrigger: {
+      trigger: badge,
+      start: "top 95%",
+      toggleActions: "play none none reverse"
+    },
+
+    opacity: 0,
+    scale: 0.5,
+    y: 20,
+    duration: 0.6,
+    ease: "back.out(1.7)"
+
+  });
+
+});
+
+    /* PROJECT CARD */
+
+    gsap.from(".reveal-card", {
+
+      scrollTrigger: {
+        trigger: "#projects",
+        start: "top 90%"
+      },
+
+      opacity: 0,
+      y: 80,
+      scale: 0.95,
+      duration: 1,
+      ease: "power3.out"
+
+    });
+
+    /* REFRESH */
+
+    setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 500);
+
+  </script>
+
+  <!-- 3D CARD EFFECT -->
+
+  <script>
+
+/* PROFESSIONAL PROJECT CARD HOVER */
+
+document.querySelectorAll(".project-card").forEach((card) => {
+
+  card.addEventListener("mouseenter", () => {
+
+    gsap.to(card, {
+      y: -10,
+      scale: 1.02,
+      boxShadow: "0 20px 50px rgba(96,165,250,0.25)",
+      duration: 0.35,
+      ease: "power2.out"
+    });
+
+  });
+
+  card.addEventListener("mouseleave", () => {
+
+    gsap.to(card, {
+      y: 0,
+      scale: 1,
+      boxShadow: "0 10px 40px rgba(0,0,0,0.3)",
+      duration: 0.35,
+      ease: "power2.out"
+    });
+
+  });
+
+});
+
+</script>
+
+</body>
+
+</html>
